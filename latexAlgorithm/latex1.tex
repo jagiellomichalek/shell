@@ -1,0 +1,43 @@
+\floatname{algorithm}{Convert document to word lists}
+\label{alg:Convertdocumenttowordlists}
+\renewcommand{\algorithmicrequire}{\textbf{input:}}
+\renewcommand{\algorithmicensure}{\textbf{output:}}
+
+\begin{algorithm}
+
+    \caption{Convert document to word lists}
+    \begin{algorithmic}[1]
+        \Require $document data$, $cut word setting$, $stop words$
+        \Ensure  $word list data$
+        \Function {ConvertDocWordlist}{$strdoc, cutall$}
+            \State $sendlist \gets split$
+            \State $sendlist \gets map(\Call RemoveChar, sendlist)$
+            \State\For{$part \to sentlist$}
+                      \State $ word2dlist = \Call RemoveToken(jieba.cut(part, cutall=cutall)) $
+            \State $ wordlist = sum(word2dlist,[])$
+            \State\Return{$wordlist$}
+        \EndFunction
+        \State
+        \Function {RemoveToken}{$words$}
+            \State $wordslist \gets list(words)$
+            \State $stopwords \gets GetStopWords()$
+            \State\For{$i \to range (wordslistLen())$}
+                      \State \If{$wordslist[i] \to stopwords$}
+                    	             \State $wordslist \gets pop(i)$
+                      \State \Else
+                    	             \State {$wordslist[i] \gets isdigit()$}
+                                   \State $wordslist \gets pop(i)$                  
+            \State\Return{$wordslist$}
+        \EndFunction
+        \State
+        \Function {GetStopWords}{$stopwords data$}
+            \State $file \gets open(path)$
+            \State\Return{$set(file)$}
+        \EndFunction
+        \State
+        \Function {RemoveChar}{$text$}
+            \State $text \gets remove(not word symbol)$
+            \State\Return{$text$}
+        \EndFunction
+    \end{algorithmic}
+\end{algorithm}

@@ -1,0 +1,38 @@
+\floatname{algorithm}{Creat tf-idf}
+\label{alg:Creattfidf}
+\renewcommand{\algorithmicrequire}{\textbf{input:}}
+\renewcommand{\algorithmicensure}{\textbf{output:}}
+
+\begin{algorithm}
+  \caption{Creat TF-IDF}
+    \begin{algorithmic}[1]
+        \Require $dictionary$
+        \Ensure  $TF-IDF data$
+        \Function {CreatTFIDF}{$dictionary$}
+            \State $tfidfModel \gets model(dictionary)$
+            \State $files \gets loaddata(dictionary)$
+            \State \For {$i, msg \to enumerate(files)$}
+                      \State\If {$i\%n \to 0$}
+                              \State $catg \gets msg[0]$
+                              \State {$file \gets msg[1]$}
+                              \State {$file \gets \Call ConvertDocToWordlist(file, cutall \gets False)$}
+                              \State $filebow \gets dictionaryDoc2bow(wordlist)$
+                              \State $filetfidf  \gets tfidfmodel[filebow]$
+                              \State $tmp \gets corpusTfidfGet(catg,[])$
+                              \State $tmp \gets append(filetfidf)$
+                              \State \If {$ tmpLen == 1$}
+                                        \State $corpusTfidf[catgs] \gets tmp$
+                      \State \If {$i\%10000 == 0$}
+                                        \State $document \to dealed$
+            \State$catgs \gets LIST(corpusTfidf(keys))$
+            \State \ForAll{$catgs$}
+                          \State  $corpora \gets serialize $
+            \If {$ docmentfrequency < 5 $}
+            			\State\ForAll {$tokenid, socfreq \to dictionary$}
+                        \State {$smallFrequencyIds \gets $}
+                        \State {$ dictionary \gets tokensfilter $}
+                        \State {$ dictionary \gets compactify()$}
+            \State\Return{$TFIDF vector$}
+        \EndFunction
+    \end{algorithmic}
+\end{algorithm}

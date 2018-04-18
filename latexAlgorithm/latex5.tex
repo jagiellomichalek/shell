@@ -1,0 +1,32 @@
+\floatname{algorithm}{LSA model}
+\label{alg:LSAmodel}
+\renewcommand{\algorithmicrequire}{\textbf{input:}}
+\renewcommand{\algorithmicensure}{\textbf{output:}}
+
+\begin{algorithm}
+  \caption{LSA model}
+    \begin{algorithmic}[1]
+        \Require $corpusTfidfTotal, dictionary$
+        \Ensure  $LSI vectors$
+        \Function {LSAmodel}{$corpusTfidfTotal, dictionary$}
+            \State $catgs \gets list(corpusTfidfKeys())$
+            \State \For {$catgs$}
+                      \State $tmp \gets corpusTfidfGet(catg)$
+                      \State $ corpusTfidfTotal \gets tmp \And corpusTfidfTotal$
+            \State $lsiModel \gets \Call Models(corpusTfidfTotal, dictionary)$
+            \State $lsiFile \gets open(tmpLsimodel)$
+            \State $pkl \gets dump(lsiModel, lsiFile)$
+            \State\Return{$lsiModel$}
+        \EndFunction
+        \State
+        \Function {ApplyLsiModel}{$LsiCorpus, TfidfCorpus$}
+            \State \For $catgs$
+                      \State \For $documents \to TfidfCorpus$
+                                \State $ corpu \gets lsiModel(catg)$
+                                \State $lsiCorpus[catg] \gets corpu$
+                                \State $TfidfCorpus \gets pop(catg)$
+                                \State $corpora \gets serialize(tmpLsi, corpu, dictionary)$
+            \State \Return{$LsiVectors$}
+        \EndFunction
+    \end{algorithmic}
+\end{algorithm}

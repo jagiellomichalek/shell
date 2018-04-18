@@ -1,0 +1,30 @@
+\floatname{algorithm}{Creat dictionary}
+\label{alg:Creatdictionary}
+\renewcommand{\algorithmicrequire}{\textbf{input:}}
+\renewcommand{\algorithmicensure}{\textbf{output:}}
+
+\begin{algorithm}
+  \caption{Creat dictionary}
+    \begin{algorithmic}[1]
+        \Require $raw data$
+        \Ensure  $dictionary$
+        \Function {Creat dictionary}{$raw data$}
+            \State $dictionary \gets corpora$
+            \State $files \gets loaddata(raw data)$
+            \State \For {$i, msg \to enumerate(files)$}
+                      \State\If {$i\%n \to 0$}
+                              \State $catg \gets msg[0]$
+                              \State {$file \gets msg[1]$}
+                              \State {$file \gets \Call ConvertDocToWordlist(file, cutall \gets False)$}
+                              \State $dictionary \gets documents([file])$
+                              \State \If {$int(i/n)\%1000 == 0$}
+                                        \State $document \to dealed$
+            \State \If {$ docmentfrequency < 5 $}
+            			\State\ForAll {$tokenid, socfreq \to dictionary$}
+                        \State {$smallFrequencyIds \gets $}
+                        \State {$ dictionary \gets tokensfilter $}
+                        \State {$ dictionary \gets compactify()$}
+            \State\Return{$dictionary$}            
+        \EndFunction
+    \end{algorithmic}
+\end{algorithm}

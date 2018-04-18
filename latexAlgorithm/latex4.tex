@@ -1,0 +1,18 @@
+\begin{algorithm}
+  \caption{Creat LSA}
+    \begin{algorithmic}[1]
+        \Require $TF-IDF data$
+        \Ensure  $LSA data$
+        \Function {CreatLSA}{$tfidf$}
+            \State $files \gets loaddata(tfidf data)$
+            \State \For {$files$}
+                      \State $file \gets split['.'][0]$
+                       \If {$t \not catglist$}
+                            \State {$t \gets catglist$}
+            \State \For {$catgs$}
+                        \State {$corpus \gets \Call MmCorpus$}
+                        \State {$corpustfidf[catg] \gets corpus$}
+            \State\Return{$LSA vector$}
+        \EndFunction
+    \end{algorithmic}
+\end{algorithm}
